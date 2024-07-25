@@ -1,11 +1,14 @@
 
-import books from '../data/books';
+
+
 import BookCardView from './partials/BookCardView';
 import BookTableView from './partials/BookTableView';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 export default function Home() {
 
     const [viewType, setViewType] = useState('table');
+    const [books, setBooks] = useState([]) // full list of books
 
     const viewSwitchHandler = (e) => {
         if (e.target.checked) {
@@ -14,6 +17,18 @@ export default function Home() {
             setViewType('table');
         }
     }
+
+    useEffect(() => {
+        //fetch('http://localhost:5000/books')
+        //    .then(resss => resss.json())
+        //  .then(dataa => setBooks(dataa))
+        //  .catch(error => console.error(error));
+
+        axios.get('http://localhost:5000/books')
+            .then(res => setBooks(res.data))
+            .catch(error => console.error(error));
+
+    }, [])
 
     return (
         <div className='container'>
