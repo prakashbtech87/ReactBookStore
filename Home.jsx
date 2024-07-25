@@ -5,10 +5,12 @@ import BookCardView from './partials/BookCardView';
 import BookTableView from './partials/BookTableView';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useFetcher } from 'react-router-dom';
 export default function Home() {
 
     const [viewType, setViewType] = useState('table');
-    const [books, setBooks] = useState([]) // full list of books
+    const [books, setBooks] = useState([]); // full list of books
+    const [filteredBooks, setFilteredBooks] = useState([]);
 
     const viewSwitchHandler = (e) => {
         if (e.target.checked) {
@@ -30,6 +32,13 @@ export default function Home() {
 
     }, [])
 
+
+
+
+    useEffect(() => {
+        setFilteredBooks(books);
+    }, [books])
+
     return (
         <div className='container'>
             <div className='row'>
@@ -42,7 +51,7 @@ export default function Home() {
             </div>
             <div className='row'>
                 <div className='col-12'>
-                    {viewType === 'table' ? <BookTableView books={books} /> : <BookCardView books={books} />}
+                    {viewType === 'table' ? <BookTableView books={filteredBooks} /> : <BookCardView books={filteredBooks} />}
 
                 </div>
 
