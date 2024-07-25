@@ -23,7 +23,8 @@ export default function Home() {
 
     const searchHandler = (e) => {
         setSearchText(e.target.value);
-        let temp = books.filter(book => book.title.toLowerCase().includes(e.target.value.toLowerCase()));
+        let temp = books.filter(book => book.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            book.author.toLowerCase().includes(e.target.value.toLowerCase()));
         setFilteredBooks(temp);
     }
 
@@ -57,7 +58,7 @@ export default function Home() {
                 </div>
 
                 <div className='col-sm-12 col-md-6 col-lg-6'>
-                    <input type="text" value={searchText} onChange={searchHandler} className='form-control' placeholder='Search Books' />
+                    <input type="text" value={searchText} onChange={searchHandler} className='form-control' placeholder='Search Books or' />
                 </div>
 
             </div>
