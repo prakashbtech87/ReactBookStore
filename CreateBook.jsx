@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react"
 
 
@@ -20,7 +21,34 @@ export default function CreateBook() {
     }
 
     const submitHandler = (e) => {
+
+        e.preventDefault();// Prevent the default action of the form
+        let bookObj = {
+            ...book,
+            pageCount: parseInt(book.pageCount),
+            year: parseInt(book.year)
+        }
         console.log(book);
+        axios.post("http://localhost:5000/books", bookObj)
+            .then((response) => {
+                console.log(response.data);
+
+
+                setBook({
+                    title: "",
+                    author: "Unknown",
+                    pageCount: 0,
+                    year: 2024,
+                    language: ""
+
+                })
+
+                alert("Book has been added successfully");
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("An Error occured while adding book");
+            })
 
     }
 
