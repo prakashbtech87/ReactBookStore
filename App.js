@@ -8,6 +8,7 @@ import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import CreateBook from './components/partials/CreateBook';
+import Detail from './components/partials/Detail';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="create" element={<CreateBook />} />
-
+        <Route path='detail/:id' element={<Detail />} />
       </Route>
     </Routes>
 
