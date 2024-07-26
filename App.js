@@ -7,16 +7,19 @@ import About from './components/partials/About';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import Layout from './components/Layout';
+import CreateBook from './components/partials/CreateBook';
 
 function App() {
   return (
     <Routes>
-    <Route path="/" element={<Layout />}  >
-      <Route index element={<Home />} />
-      <Route path="about" element={<About />} />        
-    </Route>
-  </Routes>
-  
+      <Route path="/" element={<Layout />}  >
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="create" element={<CreateBook />} />
+
+      </Route>
+    </Routes>
+
 
   );
 }
