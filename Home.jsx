@@ -51,9 +51,9 @@ export default function Home() {
         <div className='container'>
             <div className='row alert alert-info mt-2 '>
                 <div className='col-sm-12 col-md-6 col-lg-3'>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" onChange={viewSwitchHandler} role="switch" id="viewType" />
-                        <label class="form-check-label" >Card View</label>
+                    <div className="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" onChange={viewSwitchHandler} role="switch" id="viewType" />
+                        <label className="form-check-label" >Card View</label>
                     </div>
                 </div>
 
